@@ -1,10 +1,15 @@
-ml-competition-template-titanic
-===
-- [Kaggle Titanic](https://www.kaggle.com/c/titanic) example of my own, inspired by [flowlight0's repo](https://github.com/flowlight0/talkingdata-adtracking-fraud-detection).
+# ml-competition-template-titanic
+
+- [Kaggle Titanic](https://www.kaggle.com/c/titanic) example of my own, folked from [upura's repo](https://github.com/upura/ml-competition-template-titanic)
 - You can get the score = 0.76555 at the version of 2018-12-28.
 - Japanese article can be seen [here](https://upura.hatenablog.com/entry/2018/12/28/225234).
 
-# Structures
+## Note
+
+Use [kaggle/python](https://github.com/Kaggle/docker-python) container.
+
+## Structures
+
 ```
 .
 ├── configs
@@ -15,6 +20,7 @@ ml-competition-template-titanic
 │   │   ├── train.csv
 │   │   └── test.csv
 │   └── output
+├── docker-run.sh
 ├── features
 │   ├── __init__.py
 │   ├── base.py
@@ -36,27 +42,35 @@ ml-competition-template-titanic
 ├── run.py
 └── tox.ini
 ```
-# Commands
+## Commands
 
-## Change data to feather format
-
-```
-python scripts/convert_to_feather.py
-```
-
-## Create features
+### EDA by Jupyter Notebook
 
 ```
-python features/create.py
+docker-run.sh jp
 ```
 
-## Run LightGBM
+### Change data to feather format
 
 ```
-python run.py
+docker-run.sh py scripts/convert_to_feather.py
 ```
 
-## flake8
+### Create features
+
+```
+docker-run py features/create.py
+```
+
+### Run LightGBM
+
+```
+docker-run.sh py run.py
+```
+
+### flake8
+
+@todo: modify
 
 ```
 flake8 .
